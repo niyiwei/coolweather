@@ -1,10 +1,12 @@
 package com.coolweather.android.db;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * 省份类
  * 2018年3月1日21:45:40.
  */
-public class Province {
+public class Province extends DataSupport{
     /**
      * 省份ID.
      */
@@ -16,7 +18,7 @@ public class Province {
     /**
      * 省份代码.
      */
-    private String provinceCode;
+    private int provinceCode;
 
     public int getId() {
         return id;
@@ -34,11 +36,11 @@ public class Province {
         this.provinceName = provinceName;
     }
 
-    public String getProvinceCode() {
+    public int getProvinceCode() {
         return provinceCode;
     }
 
-    public void setProvinceCode(String provinceCode) {
+    public void setProvinceCode(int provinceCode) {
         this.provinceCode = provinceCode;
     }
 
