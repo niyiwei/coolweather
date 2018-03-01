@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<litepal>
+    <!--定义数据库的名称-->
+    <dbname value="cool_weather"/>
+
+    <!--定义当前数据库版本-->
+    <version value="1"/>
+
+    <!--定义需要映射的类-->
+    <list>
+        <mapping class="com.coolweather.android.db.Province"/>
+        <mapping class="com.coolweather.android.db.City"/>
+        <mapping class="com.coolweather.android.db.County"/>
+    </list>
+</litepal>
