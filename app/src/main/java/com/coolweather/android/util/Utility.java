@@ -6,6 +6,8 @@ import android.util.Log;
 import com.coolweather.android.db.City;
 import com.coolweather.android.db.County;
 import com.coolweather.android.db.Province;
+import com.coolweather.android.gson.Weather;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,7 +43,7 @@ public class Utility {
             }
             return true;
         } catch (JSONException e) {
-            Log.e("Utility", "handleProvinceResponse exception||"+e.getMessage());
+            Log.e("Utility", "handleProvinceResponse exception||" + e.getMessage());
             e.printStackTrace();
         }
         return true;
@@ -71,7 +73,7 @@ public class Utility {
             }
             return true;
         } catch (JSONException e) {
-            Log.e("Utility", "handleCityResponse exception||"+e.getMessage());
+            Log.e("Utility", "handleCityResponse exception||" + e.getMessage());
             e.printStackTrace();
         }
         return false;
@@ -101,9 +103,22 @@ public class Utility {
             }
             return true;
         } catch (JSONException e) {
-            Log.e("Utility", "handleCountyResponse exception||"+e.getMessage());
+            Log.e("Utility", "handleCountyResponse exception||" + e.getMessage());
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static Weather handleWeatherResponse(final String response) {
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
+            String weatherContent = jsonArray.get(0).toString();
+            return new Gson().fromJson(weatherContent, Weather.class);
+        } catch (Exception e) {
+            Log.e("Utility", "handleWeatherResponse exception||" + e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
     }
 }

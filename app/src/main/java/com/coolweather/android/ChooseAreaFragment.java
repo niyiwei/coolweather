@@ -2,6 +2,7 @@ package com.coolweather.android;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -109,6 +110,12 @@ public class ChooseAreaFragment extends Fragment {
                 selectedCity = cityList.get(position);
                 Log.i("ChooseAreaFragment","当前选择的省:"+selectedProvince+",当前选择的市:"+selectedCity+",position="+position+",id="+id);
                 queryCounties();
+            }else if (currentLevel == LEVEL_COUNTY){
+                String weatherId = countyList.get(position).getWeatherId();
+                Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                intent.putExtra("weather_id", weatherId);
+                startActivity(intent);
+                getActivity().finish();
             }
         });
         // 设置返回按钮点击事件
