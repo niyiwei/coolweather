@@ -180,6 +180,7 @@ public class WeatherActivity extends AppCompatActivity {
         comfortText.setText(comfort);
         carWashText.setText(carWash);
         sportText.setText(sport);
+        weatherLayout.setVisibility(View.VISIBLE);
     }
 
     private void loadBingPic() {
